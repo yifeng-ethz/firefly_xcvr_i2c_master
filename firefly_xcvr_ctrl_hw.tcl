@@ -4,8 +4,8 @@
 
 
 # 
-# firefly_xcvr_ctrl "Firefly Tranceiver I2C Controller" v1.9.6
-# Yifeng Wang 2024.05.16.15:01:23
+# firefly_xcvr_ctrl "Firefly Tranceiver I2C Controller" v26.0.330
+# Yifeng Wang 2026.03.30
 # Interfacing with two Samtec FireFly ECUO 14G x4 optical modules. Function as the I2C master to monitor the temperature, vcc and rx power of the modules.
 # 
 
@@ -20,7 +20,7 @@ package require -exact qsys 16.1
 # 
 set_module_property DESCRIPTION "Interfacing with two Samtec FireFly ECUO 14G x4 optical modules. Function as the I2C master to monitor the temperature, vcc and rx power of the modules."
 set_module_property NAME firefly_xcvr_ctrl
-set_module_property VERSION 1.9.6
+set_module_property VERSION 26.0.330
 set_module_property INTERNAL false
 set_module_property OPAQUE_ADDRESS_MAP true
 set_module_property GROUP "Mu3e Control Plane/Modules"
@@ -176,4 +176,3 @@ add_interface_port to_firefly_ucc8 io_firefly_sda sda Bidir 1
 add_interface_port to_firefly_ucc8 o_firefly_reset_n reset_n Output 2
 add_interface_port to_firefly_ucc8 o_firefly_select_n select_n Output 2
 add_interface_port to_firefly_ucc8 i_firefly_int_n int_n Input 2
-

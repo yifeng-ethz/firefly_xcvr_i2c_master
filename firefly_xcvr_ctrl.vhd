@@ -1,8 +1,9 @@
 -- File name: firefly_xcvr_ctrl.vhd 
 -- Author: Yifeng Wang (yifenwan@phys.ethz.ch)
 -- =======================================
--- Revision: 1.0 (file created)
---		Date: May 8, 2024
+-- Revision: 26.0.0330
+--		Date: Mar 30, 2026
+--		Change: Reissue the Firefly I2C controller in date-style versioning and bound the reset counter to SYSTEM_CLK_FREQ for Questa-safe analysis
 -- =========
 -- Description:	[Firefly Tranceiver I2C Controller]
 --				Interfacing with two Samtec FireFly ECUO 14G x4 optical modules 
@@ -135,7 +136,7 @@ architecture rtl of firefly_xcvr_ctrl is
 	
 	signal firefly_reset_go,firefly_reset_done			: std_logic;
 	--constant time_count_200us			: natural := 156250000;--integer(ceil( real(SYSTEM_CLK_FREQ)*0.0002 ));
-	signal reset_cnt				: natural range 0 to 2**32-1;
+	signal reset_cnt				: natural range 0 to SYSTEM_CLK_FREQ;
 	signal hidden_csr_on			: std_logic;
 
 begin
