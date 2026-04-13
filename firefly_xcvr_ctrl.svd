@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<device schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd">
+  <vendor>Mu3e</vendor>
+  <vendorID>MU3E</vendorID>
+  <name>MU3E_FIREFLY_XCVR_CTRL</name>
+  <series>MU3E_FPGA_IP</series>
+  <version>26.0.330</version>
+  <description>CMSIS-SVD description of the Firefly optical-module I2C monitor aperture. BaseAddress is 0 because this file describes the relative CSR aperture of the IP; system integration supplies the live slave base address.</description>
+  <addressUnitBits>8</addressUnitBits>
+  <width>32</width>
+  <size>32</size>
+  <access>read-write</access>
+  <resetValue>0x00000000</resetValue>
+  <resetMask>0xFFFFFFFF</resetMask>
+  <peripherals>
+    <peripheral>
+      <name>FIREFLY_XCVR_CTRL</name>
+      <description>Relative 14-word Firefly monitor aperture. Read semantics dominate; the first three words also accept control writes described in each register description.</description>
+      <groupName>MU3E_FIREFLY</groupName>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x38</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>FF1_TEMP_STATUS</name>
+          <description>Firefly 1 status/control word. Reads return temperature in bits [7:0]. When hidden CSR mode is enabled, bits [27:24] expose present_n and int_n pins. Writing bit 0 enables or disables continuous I2C polling.</description>
+          <addressOffset>0x00</addressOffset>
+          <access>read-write</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF1_VCC_RESET</name>
+          <description>Firefly 1 VCC/control word. Reads return the low 16 bits of the VCC measurement. Writing bit 0 requests a Firefly reset pulse.</description>
+          <addressOffset>0x04</addressOffset>
+          <access>read-write</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF1_RXPWR1_HIDDEN</name>
+          <description>Firefly 1 RX power channel 1 on read. Writing bit 0 enables or disables the hidden CSR page that augments FF1_TEMP_STATUS.</description>
+          <addressOffset>0x08</addressOffset>
+          <access>read-write</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF1_RXPWR2</name>
+          <description>Firefly 1 received optical power for channel 2 in the low 16 bits.</description>
+          <addressOffset>0x0C</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF1_RXPWR3</name>
+          <description>Firefly 1 received optical power for channel 3 in the low 16 bits.</description>
+          <addressOffset>0x10</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF1_RXPWR4</name>
+          <description>Firefly 1 received optical power for channel 4 in the low 16 bits.</description>
+          <addressOffset>0x14</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF1_ALARM</name>
+          <description>Firefly 1 latched alarm/status flags. Bits clear on read inside the module according to the Firefly alarm semantics.</description>
+          <addressOffset>0x18</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF2_TEMP_STATUS</name>
+          <description>Firefly 2 status word. Reads return temperature in bits [7:0].</description>
+          <addressOffset>0x1C</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF2_VCC</name>
+          <description>Firefly 2 VCC measurement in the low 16 bits.</description>
+          <addressOffset>0x20</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF2_RXPWR1</name>
+          <description>Firefly 2 received optical power for channel 1 in the low 16 bits.</description>
+          <addressOffset>0x24</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF2_RXPWR2</name>
+          <description>Firefly 2 received optical power for channel 2 in the low 16 bits.</description>
+          <addressOffset>0x28</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF2_RXPWR3</name>
+          <description>Firefly 2 received optical power for channel 3 in the low 16 bits.</description>
+          <addressOffset>0x2C</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF2_RXPWR4</name>
+          <description>Firefly 2 received optical power for channel 4 in the low 16 bits.</description>
+          <addressOffset>0x30</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FF2_ALARM</name>
+          <description>Firefly 2 latched alarm/status flags. Bits clear on read inside the module according to the Firefly alarm semantics.</description>
+          <addressOffset>0x34</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Raw 32-bit register word. Refer to the register description for read-versus-write semantics.</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+  </peripherals>
+</device>
