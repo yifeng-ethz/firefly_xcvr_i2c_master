@@ -4,7 +4,7 @@
 
 
 # 
-# firefly_xcvr_ctrl "Firefly Tranceiver I2C Controller" v26.0.330
+# firefly_xcvr_ctrl "Firefly Tranceiver I2C Controller" v26.2.423
 # Yifeng Wang 2026.03.30
 # Interfacing with two Samtec FireFly ECUO 14G x4 optical modules. Function as the I2C master to monitor the temperature, vcc and rx power of the modules.
 # 
@@ -20,7 +20,8 @@ package require -exact qsys 16.1
 # 
 set_module_property DESCRIPTION "Interfacing with two Samtec FireFly ECUO 14G x4 optical modules. Function as the I2C master to monitor the temperature, vcc and rx power of the modules."
 set_module_property NAME firefly_xcvr_ctrl
-set_module_property VERSION 26.0.330
+set_module_property VERSION 26.2.423
+set_module_property ELABORATION_CALLBACK elaborate
 set_module_property INTERNAL false
 set_module_property OPAQUE_ADDRESS_MAP true
 set_module_property GROUP "Mu3e Control Plane/Modules"
@@ -62,11 +63,11 @@ set_parameter_property I2C_BAUD_RATE TYPE NATURAL
 set_parameter_property I2C_BAUD_RATE UNITS None
 set_parameter_property I2C_BAUD_RATE ALLOWED_RANGES 0:2147483647
 set_parameter_property I2C_BAUD_RATE HDL_PARAMETER true
-add_parameter SYSTEM_CLK_FREQ NATURAL 156250000
-set_parameter_property SYSTEM_CLK_FREQ DEFAULT_VALUE 156250000
+add_parameter SYSTEM_CLK_FREQ NATURAL 125000000
+set_parameter_property SYSTEM_CLK_FREQ DEFAULT_VALUE 125000000
 set_parameter_property SYSTEM_CLK_FREQ DISPLAY_NAME SYSTEM_CLK_FREQ
 set_parameter_property SYSTEM_CLK_FREQ TYPE NATURAL
-set_parameter_property SYSTEM_CLK_FREQ UNITS None
+set_parameter_property SYSTEM_CLK_FREQ UNITS Hertz
 set_parameter_property SYSTEM_CLK_FREQ ALLOWED_RANGES 0:2147483647
 set_parameter_property SYSTEM_CLK_FREQ HDL_PARAMETER true
 add_parameter AVS_FIREFLY_ADDR_W NATURAL 5
@@ -133,7 +134,7 @@ set_interface_assignment firefly embeddedsw.configuration.isPrintableDevice 0
 # connection point system_clock
 # 
 add_interface system_clock clock end
-set_interface_property system_clock clockRate 156250000
+set_interface_property system_clock clockRate 0
 set_interface_property system_clock ENABLED true
 set_interface_property system_clock EXPORT_OF ""
 set_interface_property system_clock PORT_NAME_MAP ""
@@ -176,3 +177,7 @@ add_interface_port to_firefly_ucc8 io_firefly_sda sda Bidir 1
 add_interface_port to_firefly_ucc8 o_firefly_reset_n reset_n Output 2
 add_interface_port to_firefly_ucc8 o_firefly_select_n select_n Output 2
 add_interface_port to_firefly_ucc8 i_firefly_int_n int_n Input 2
+
+proc elaborate {} {
+    set_interface_property system_clock clockRate [get_parameter_value SYSTEM_CLK_FREQ]
+}
