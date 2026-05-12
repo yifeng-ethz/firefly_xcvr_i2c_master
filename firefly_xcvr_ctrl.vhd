@@ -252,7 +252,7 @@ begin
 	
 	end process proc_avs_interface;
 	
-	proc_reset_firefly : process(i_clk,i_rst,reset_cnt,firefly_reset_go)
+	proc_reset_firefly : process(i_clk,i_rst)
 	-- reset for 400 us once firefly_reset_go is asserted
 	begin
 		if (i_rst = '1') then 
